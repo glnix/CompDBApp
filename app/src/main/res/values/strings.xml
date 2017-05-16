@@ -1,0 +1,6 @@
+<resources>
+    <string name="app_name">CompDB</string>
+    <string name="title_activity_comp_details">CompDetailsActivity</string>
+    <string name="error">Ошибка загрузки данных</string>
+    <string name="repeat">Повторить</string>
+</resources>

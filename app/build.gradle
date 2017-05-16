@@ -1,0 +1,85 @@
+apply plugin: 'com.android.application'
+apply plugin: 'com.neenbedankt.android-apt'
+apply plugin: 'me.tatarka.retrolambda'
+
+apply from: 'versions.properties'
+
+android {
+    compileSdkVersion 25
+    buildToolsVersion "25.0.2"
+    defaultConfig {
+        applicationId "ru.goryachev.testjobs.compdb"
+        minSdkVersion 16
+        targetSdkVersion 25
+        versionCode 1
+        versionName "1.0"
+        testInstrumentationRunner "android.support.test.runner.AndroidJUnitRunner"
+    }
+
+    defaultConfig{
+        buildConfigField "String", "API_BASE_URL", "\"https://raw.githubusercontent.com/glnix/CompDB/master/API/\""
+    }
+
+    buildTypes {
+        release {
+            minifyEnabled false
+            proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
+        }
+    }
+
+    compileOptions {
+        sourceCompatibility JavaVersion.VERSION_1_8
+        targetCompatibility JavaVersion.VERSION_1_8
+    }
+
+    packagingOptions {
+        exclude 'META-INF/DEPENDENCIES.txt'
+        exclude 'META-INF/LICENSE.txt'
+        exclude 'META-INF/NOTICE.txt'
+        exclude 'META-INF/NOTICE'
+        exclude 'META-INF/LICENSE'
+        exclude 'META-INF/DEPENDENCIES'
+        exclude 'META-INF/notice.txt'
+        exclude 'META-INF/license.txt'
+        exclude 'META-INF/dependencies.txt'
+        exclude 'META-INF/LGPL2.1'
+        exclude 'META-INF/rxjava.properties'
+    }
+}
+
+dependencies {
+    compile fileTree(dir: 'libs', include: ['*.jar'])
+    androidTestCompile('com.android.support.test.espresso:espresso-core:2.2.2', {
+        exclude group: 'com.android.support', module: 'support-annotations'
+    })
+    compile "com.android.support:appcompat-v7:${supportVersion}"
+    compile "com.android.support:design:${supportVersion}"
+
+    //Rx
+    compile "io.reactivex.rxjava2:rxjava:${rxjavaVersion}"
+    compile "io.reactivex.rxjava2:rxandroid:${rxandroidVersion}"
+
+    //Retrofit
+    compile "com.squareup.retrofit2:retrofit:${retrofitVersion}"
+    compile "com.squareup.retrofit2:converter-jackson:${retrofitVersion}"
+    compile "com.squareup.retrofit2:adapter-rxjava2:${retrofitVersion}"
+
+    //Dagger 2
+    apt "com.google.dagger:dagger-compiler:${dagger2Version}"
+    compile "com.google.dagger:dagger:${dagger2Version}"
+
+    //Moxy
+    compile "com.arello-mobile:moxy:${moxyVersion}"
+    compile "com.arello-mobile:moxy-app-compat:${moxyVersion}"
+    provided "com.arello-mobile:moxy-compiler:${moxyVersion}"
+
+    //Jackson
+    compile "com.fasterxml.jackson.core:jackson-core:${jacksonVersion}"
+
+    //Logging
+    compile "com.jakewharton.timber:timber:${timberVersion}"
+
+    compile 'com.android.support.constraint:constraint-layout:1.0.2'
+    testCompile 'junit:junit:4.12'
+    provided 'org.glassfish:javax.annotation:10.0-b28'
+}
