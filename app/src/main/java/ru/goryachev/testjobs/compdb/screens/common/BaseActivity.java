@@ -1,6 +1,7 @@
 package ru.goryachev.testjobs.compdb.screens.common;
 
 
+import android.content.Context;
 import android.support.annotation.StringRes;
 import android.support.v7.widget.Toolbar;
 import android.view.ViewGroup;
@@ -26,8 +27,18 @@ public class BaseActivity extends MvpAppCompatActivity {
         }
     }
 
-    protected ViewGroup getRootView(){
+    protected void setToolbarTitle(CharSequence title) {
+        if (getSupportActionBar() != null) {
+            getSupportActionBar().setTitle(title);
+        }
+    }
+
+    protected ViewGroup getRootView() {
         return rootView;
     }
 
+    protected Context getActivityContext() {
+        return this;
+    }
 }
+

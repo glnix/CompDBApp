@@ -6,6 +6,44 @@
     android:layout_height="match_parent"
     app:layout_behavior="@string/appbar_scrolling_view_behavior"
     tools:context="ru.goryachev.testjobs.compdb.screens.CompDetailsActivity"
-    tools:showIn="@layout/activity_comp_details">
+    tools:showIn="@layout/activity_comp_details"
+    android:paddingLeft="@dimen/horzontal_padding"
+    android:paddingRight="@dimen/horzontal_padding"
+    android:paddingTop="@dimen/vertical_padding"
+    android:paddingBottom="@dimen/horzontal_padding">
 
+    <android.support.v7.widget.AppCompatImageView
+        android:id="@+id/comp_image"
+        android:layout_width="150dp"
+        android:layout_height="150dp"
+        android:layout_alignParentTop="true"
+        android:layout_centerHorizontal="true"
+        android:adjustViewBounds="true"
+        android:cropToPadding="true"
+        android:scaleType="centerInside"
+        app:srcCompat="@android:color/transparent" />
+
+    <android.support.v7.widget.AppCompatTextView
+        android:id="@+id/comp_name"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentEnd="true"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentRight="true"
+        android:layout_alignParentStart="true"
+        android:layout_below="@+id/comp_image"
+        android:textAlignment="center"
+        android:textAppearance="@style/TextAppearance.AppCompat.Title"
+        tools:text="Name" />
+
+    <android.support.v7.widget.AppCompatTextView
+        android:id="@+id/comp_description"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        tools:text="Decription"
+        android:layout_below="@+id/comp_name"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentStart="true"
+        android:layout_alignParentRight="true"
+        android:layout_alignParentEnd="true" />
 </RelativeLayout>

@@ -20,6 +20,9 @@ public class ApiService {
 
     public Observable<List<Comp>> getCompList() {
         return retrofit.create(CompDBService.class).compList();
+
+    } public Observable<Comp> getCompDetails(int compId) {
+        return retrofit.create(CompDBService.class).compDetasils(compId);
     }
 
     private ApiService() {
